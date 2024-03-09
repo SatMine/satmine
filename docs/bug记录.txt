@@ -1,0 +1,214 @@
+
+
+
+重点项目: 
+加一个用 mrc721name 返回矿机主图片接口  完成
+加一个mrc20 的 hold 接口  加在 all721接口  mrc20_holders 加 image  加   mrc20_json  mrc721_img_id  完成
+/api/v1/mrc20/genesisdata  加一个燃烧总量 total_burn   完成
+deploy 时 tick 如果是大写不能成功   完成
+添加一个精度, dec 作为可选项
+首页 hold 更新有问题  完成
+我们持仓的数据统计 
+
+代码优化项:
+绘基本架构图
+Const、全局实例这些放一个包
+接口放一个包并按接口分类拆分成不同的文件；
+代码中的Key Value应用，Key的管理统一放一个地方，不要散落在各个方法中；
+接口的返回结构不统一，建议统一返回结构；
+代码文件名要重写
+包名要改
+
+
+
+721 列表排序错误  完成
+
+
+
+
+
+为GenesisData数据写接口 完成
+抽奖时无铭文块不抽奖 完成 
+404矿机没有挖成功矿 没有问题
+
+为每次抽奖写持久记录以便查询 矿机名 中奖地址 块高 时间 中奖金额    奖池累积量/剩余  当前中奖比例 
+
+
+
+
+个别矿机参数失效 检查后发现没有问题只是显示问题 
+燃烧的配置需要重新讨论 完成
+燃烧的处理不对最大是9倍, 需修正成10倍 (改成 11000 封顶) 完成
+
+func (b *BTOrdIdx) GetBurnInfo(inscriptionID string)  此函数要改, 计算不能只算10倍的
+
+
+
+
+导出2.0索引 ok上架文件的数据文件 完成
+安装主网+测试网ord基础服务程序  完成
+addressmrc721barplus mrc20name 要改成 mrc721name 加币名, 还要第一矿机的铭文ID , 加bar 完成  
+addressmrc20bar 接口加总币数量 完成 
+
+
+info 再补一个,  完成 
+燃烧接口补一个,  完成 
+加功能显示最后一个铭刻完成的矿机  完成 
+
+chart 改成js 运行的   完成 
+
+
+inscription详情的接口没有包裹在{code,data,message}的data里面里面 完成 
+
+
+单查 transfer 铭文 的接口还没有, 我补一个.. 
+用ID 查  mrc20 mrc721 的信息, 
+mrc20 需要返回数量, 及是否有效..
+燃烧的info 里的最大值不对, 需修正 完成 
+
+
+
+
+紧要项目:
+
+
+次要项目:
+协议中 token 的数值未校验  
+矿机显示增加一个矿机转移后的挖矿数量
+抽奖时发送奖励到空账户时需要新建账户 
+
+
+Bug项目:
+测试网 tb1peqnx8sj2ptjvy7v6axkl0zmt0rurduayh6fg5j3p2uew9gw6nkyqm34zxw 看不到新矿机列表
+
+
+
+
+
+翻页总数返回的是设置的值 修复
+翻页设置太大会出错 修复
+显示接口允许0算力 完成
+tb1p25zdzwtz8rxrxm2ekghrzp952pwgfmxcdq7nc989tsfqdndess6qwhrz0n 地址
+转移后资产乱码  修复
+ {
+    "tick": "sss",
+    "balance": "100000\u0012b�0"
+},
+转移铭文资产不到账问题 修复
+
+
+
+
+
+这个矿机参数会无法挖矿的bug
+{
+    "p": "mrc-721",
+    "miner": {
+      "name": "ドラえもん",
+      "max": "6666",
+      "lim": "6"
+    },
+    "token": {
+      "tick": "dora",
+      "total": "600000000000000",
+      "beg": "5000000000",
+      "halv": "20",
+      "dcr": "0.5"
+    },
+    "ltry": {
+      "pool": "0.2",
+      "intvl": "10",
+      "winp": "1",
+      "dist": "1"
+    },
+    "burn": {
+      "unit": "6600000000",
+      "boost": "1"
+    }
+}
+
+
+{
+    "p": "mrc-721",
+    "miner": {
+      "name": "ドラえもん",
+      "max": "6666",
+      "lim": "6"
+    },
+    "token": {
+      "tick": "dora",
+      "total": "600000000000000",
+      "beg": "5000000000",
+      "halv": "20",
+      "dcr": "0.5"
+    }
+}
+
+
+
+
+mrc721转移不到钱包 修复
+mrc20 transfer 转移成功对方钱包没收到币 (未发现bug)
+矿机返回时加入币名 新增完成
+取消 mock 接口, 增加调试用 js代码
+研究铭文挂单接口
+
+mrc721转移不到钱包 修复
+addressmrc721list 里的高度有问题 修复并增加ord高度
+燃烧的最大增涨幅度从100倍改成10倍
+
+
+tb1q62urzrzrkpmljnrgarjt0ylkzw3q3wyhc4rr8u 60f1d9aa9741f2ae72567567569f191ad0bcf8a69f6fc2fac632b9cd0f203i0
+
+{ 
+  "p": "mrc-20",
+  "op": "transfer",
+  "tick": "btc",
+  "amt": "134500000",
+  "dec": "8"
+}
+60678678671f2a32424675567567766567c2fac632b9cd0f203i0
+
+tb1q62urzrzrkpmljnrgarjt0ylkzw3q3wyhc49999
+
+转移到: tb11116tlm3l44gzdey2m9p2kfhr03cplt3dmn1111
+
+
+升级api 支持ordhook 2.0 
+ordhook 的调用加入 check-blocks-integrity
+用新服务器重新索引 ordhook 2.0 
+燃烧算力未出来bug  修复 
+燃烧取消Number 修改成用 ID 定位 修复 
+all721 分页时, 过滤时还是返的全数量 修复
+BB33 统计出错, 只该有4个.. 修复
+
+
+前几天我接收了10个铭文的地址，索引里面还是0
+bc1paw4k53s7cl4lnvuj9n59gg0dj4jrg4u6j5uaffj7a9ayjj5xq96q44x6lu
+其中一个铭文:
+683952f436efd68adc1374ce04b95bc27456a8c817819fef49bba32e39ca6755i0
+
+bc1p25zdzwtz8rxrxm2ekghrzp952pwgfmxcdq7nc989tsfqdndess6qel4d4u
+这个地址今天中午向下面这地址转移了1个BTC矿机
+bc1pjc0hnckhp9reldfe6pa23s3u7k29yax4j8pqm7mc4xcc6885y2hswjd26e
+
+
+
+
+铭文转移不成功  
+
+
+
+
+      "id": "fe9f14490d5f66edce3f962b8a7e1de9955e6e2fafbbcd7e6b3ed60749f48382i0",
+      "meta": {
+        "name": "SATMINE #52209197"  真实编号是: 52209199
+      }
+
+      "id": "0031b545c91a1e5636d2f375157552b10027c81e32e0c03d2987dac575876868i0",
+      "meta": {
+        "name": "SATMINE #52216101"
+      }
+
+
+
